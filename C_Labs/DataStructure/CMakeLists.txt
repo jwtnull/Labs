@@ -14,6 +14,7 @@ set(CMAKE_C_STANDARD 11)
 add_executable(DataStructure main.c
         icu/zhaocc/datastructure/array/Array.c
         icu/zhaocc/datastructure/array/Array.h
+        icu/zhaocc/datastructure/linkedlist/LinkedList.c
 )
 
 if (CMAKE_VERSION VERSION_GREATER  3.28)
