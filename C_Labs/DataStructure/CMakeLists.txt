@@ -12,9 +12,9 @@ set(CMAKE_C_STANDARD 11)
 
 # 将源代码添加到此项目的可执行文件。
 add_executable(DataStructure main.c
-        icu/zhaocc/datastructure/array/Array.c
-        icu/zhaocc/datastructure/array/Array.h
-        icu/zhaocc/datastructure/linkedlist/LinkedList.c
+        com/lab/datastructure/array/Array.c
+        com/lab/datastructure/array/Array.h
+        com/lab/datastructure/linkedlist/LinkedList.c
 )
 
 if (CMAKE_VERSION VERSION_GREATER  3.28)

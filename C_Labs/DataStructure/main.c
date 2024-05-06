@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "icu/zhaocc/datastructure/array/Array.h"
-#include "icu/zhaocc/datastructure/linkedlist/LinkedList.h"
+#include "com/lab/datastructure/array/Array.h"
+#include "com/lab/datastructure/linkedlist/LinkedList.h"
 
 // 函数声明
 void arrayTest();

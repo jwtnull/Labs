@@ -1,4 +1,4 @@
-package icu.zhaocc.lab.datastructure.array;
+package com.lab.datastructure.array;
 
 import org.junit.Test;
 
