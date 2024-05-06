@@ -88,7 +88,7 @@ bool remove_linkedList(PLINKEDLIST header)
 bool removeByVal_linkedList(PLINKEDLIST header, PLINKEDLIST val)
 {
 
-}·
+}
 
 /**
  * 修改指定元素
