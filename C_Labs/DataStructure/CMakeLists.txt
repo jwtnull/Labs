@@ -15,6 +15,8 @@ add_executable(DataStructure main.c
         com/lab/datastructure/array/Array.c
         com/lab/datastructure/array/Array.h
         com/lab/datastructure/linkedlist/LinkedList.c
+        com/lab/datastructure/stack/Stack.c
+        com/lab/datastructure/stack/Stack.h
 )
 
 if (CMAKE_VERSION VERSION_GREATER  3.28)

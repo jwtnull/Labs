@@ -157,3 +157,4 @@ gen
 cmake-build-debug/
 C_Labs/Basic/.vscode
 node_modules
+C_Labs/.vscode
