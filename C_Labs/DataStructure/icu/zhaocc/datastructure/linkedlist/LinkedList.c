@@ -53,6 +53,30 @@ bool add_linkedList(PLINKEDLIST header, int val)
  */
 bool remove_linkedList(PLINKEDLIST header)
 {
+    if (NULL == header)
+    {
+        puts("删除失败，头指针为空");
+        return false;
+    }
+
+    PLINKEDLIST tempNode = header;
+    //上一个节点
+    PLINKEDLIST preNode;
+    while (1)
+    {
+
+        if (NULL == tempNode->nextNode)
+        {
+            free(tempNode);
+            preNode->nextNode=NULL;
+            break;
+        }
+        preNode=tempNode;
+        tempNode = tempNode->nextNode;
+
+    }
+
+    return true;
 }
 
 /**
@@ -63,7 +87,8 @@ bool remove_linkedList(PLINKEDLIST header)
  */
 bool removeByVal_linkedList(PLINKEDLIST header, PLINKEDLIST val)
 {
-}
+
+}·
 
 /**
  * 修改指定元素
@@ -83,6 +108,7 @@ bool update_linkedList(PLINKEDLIST header, PLINKEDLIST update)
 bool clean_linkedList(PLINKEDLIST header)
 {
     free(header);
+    header=NULL;
     return true;
 }
 
@@ -124,37 +150,23 @@ void show_linkedList(PLINKEDLIST header)
  * 排序(冒泡排序)
  * @param header
  */
-void sort_linkedList(PLINKEDLIST header)
-{
-    if (isEmpty_linkedList(header))
-    {
+void sort_linkedList(PLINKEDLIST header) {
+    if (isEmpty_linkedList(header)) {
         puts("排序失败，链表为空");
         exit(EXIT_FAILURE);
     }
     int count = getSize_linkedList(header);
+    PLINKEDLIST pi, pj;
+    int i, j, temp;
+    for (i = 0, pi = header->nextNode; i < count - 1; ++i, pi = pi->nextNode) {
+        for (j = i + 1, pj = pi->nextNode; j < count; ++j, pj = pj->nextNode) {
 
-    //TODO 未完成
-    for (int i = 0; i < count - 1; ++i)
-    {
-        bool flag = false;
-        PLINKEDLIST tempNode = header->nextNode;
-        for (int j = 0; j < count - 1 - i; ++j, tempNode = tempNode->nextNode)
-        {
-            int currentData = tempNode->data;
-            int nextData = tempNode->nextNode->data;
-            int temp;
-            if (currentData > nextData)
-            {
-                // 递一个数据和第二个数据交换位置
-                temp = currentData;
-                currentData = nextData;
-                nextData = temp;
-                flag = true;
+            if (pi->data > pj->data) {
+                temp = pi->data;
+                pi->data = pj->data;
+                pj->data = temp;
             }
-        }
-        if (!flag)
-        {
-            break;
+
         }
     }
 }

@@ -43,7 +43,14 @@ void linkedListTest()
     add_linkedList(linkedList, 2);
     sort_linkedList(linkedList);
 
+
     int count = getSize_linkedList(linkedList);
     printf("链表有效个数：%d\n", count);
+    show_linkedList(linkedList);
+
+    remove_linkedList(linkedList);
+
+    int count2 = getSize_linkedList(linkedList);
+    printf("链表有效个数：%d\n", count2);
     show_linkedList(linkedList);
 }
