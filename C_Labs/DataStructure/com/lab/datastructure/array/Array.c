@@ -1,23 +1,84 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "Array.h"
+#include <stdbool.h>
+// #include "Array.h"
+typedef struct Array
+{
+    // å®¹é‡
+    int capacity;
+    // æœ‰æ•ˆä¸ªæ•°
+    int count;
+    // å­˜å‚¨æ•°æ®
+    int* data;
+}  *PARRAY,ARRAY;
 
 /**
- * ³õÊ¼»¯Êı×é
- * @param capacity ÈİÁ¿
+ * æ•°ç»„åˆå§‹åŒ–
+ * @param capacity å®¹é‡
+ */
+PARRAY init_array(int capacity);
+
+
+/**
+ * åˆ¤æ–­æ•°ç»„æ˜¯å¦ä¸ºç©ºã€
+ * @param array struct Array*
+ */
+bool isEmpty_array(PARRAY array);
+
+/**
+ * åˆ¤æ–­æ•°ç»„æ˜¯å¦å·²æ»¡
+ * @param array struct Array*
+ * @return
+ */
+bool isFull_array(PARRAY array);
+
+/**
+ * æ¸…ç©ºæ•°ç»„
+ */
+void clean_array(PARRAY array);
+
+/**
+ * æ‰“å°æ•°ç»„
+ */
+void show_array(PARRAY array);
+
+/**
+ * æ·»åŠ æ•°æ®åˆ°æ•°ç»„å°¾éƒ¨
+ */
+void add_array(PARRAY array,int data);
+int main(int argc, char const *argv[])
+{
+    puts("=====Array=====");
+    PARRAY array = init_array(10);
+
+    printf("%d\n", array->capacity);
+
+    for (int i = 1; i <= 10; ++i)
+    {
+        add_array(array, i);
+    }
+    show_array(array);
+    clean_array(array);
+    return 0;
+}
+
+/**
+ * åˆå§‹åŒ–æ•°ç»„
+ * @param capacity å®¹é‡
  */
 PARRAY init_array(int capacity)
 {
-    PARRAY  array=malloc(sizeof( PARRAY));
-    if (NULL==array){
-        puts("Êı×é³õÊ¼»¯Òì³££¬ÄÚ´æ·ÖÅäÊ§°Ü");
+    PARRAY array = malloc(sizeof(PARRAY));
+    if (NULL == array)
+    {
+        puts("æ•°ç»„åˆå§‹åŒ–å¼‚å¸¸ï¼Œå†…å­˜åˆ†é…å¤±è´¥");
         exit(1);
     }
     array->data = malloc(capacity);
     if (NULL == array->data)
     {
-        puts("Êı×é³õÊ¼»¯Òì³££¬ÄÚ´æ·ÖÅäÊ§°Ü");
+        puts("æ•°ç»„åˆå§‹åŒ–å¼‚å¸¸ï¼Œå†…å­˜åˆ†é…å¤±è´¥");
         exit(1);
     }
     array->capacity = capacity;
@@ -26,15 +87,14 @@ PARRAY init_array(int capacity)
 }
 
 /**
- * ´òÓ¡Êı×é
+ * æ‰“å°æ•°ç»„
  */
 void show_array(PARRAY array)
 {
     if (isEmpty_array(array))
     {
-        puts("´òÓ¡Ê§°Ü£¬Êı×éÎª¿Õ");
+        puts("æ‰“å°å¤±è´¥ï¼Œæ•°ç»„ä¸ºç©º");
         exit(1);
-        
     }
 
     for (int i = 0; i < array->count; i++)
@@ -44,45 +104,46 @@ void show_array(PARRAY array)
 }
 
 /**
- * ÅĞ¶ÏÊı×éÊÇ·ñÎª¿Õ
- * @return true:Îª¿Õ false:²»Îª¿Õ
+ * åˆ¤æ–­æ•°ç»„æ˜¯å¦ä¸ºç©º
+ * @return true:ä¸ºç©º false:ä¸ä¸ºç©º
  */
 bool isEmpty_array(PARRAY array)
 {
     return array->count == 0;
 }
 /**
- * ÅĞ¶ÏÊı×éÊÇ·ñÒÑÂú
+ * åˆ¤æ–­æ•°ç»„æ˜¯å¦å·²æ»¡
  * @param array
  * @return
  */
 bool isFull_array(PARRAY array)
 {
-return array->count ==array->capacity;
-
+    return array->count == array->capacity;
 }
 
 /**
- * Ìí¼ÓÊı¾İµ½Î²²¿
+ * æ·»åŠ æ•°æ®åˆ°å°¾éƒ¨
  * @param array
  * @param data
  */
-void add_array(PARRAY array,int data){
-    if(isFull_array(array)){
-        puts("Ìí¼ÓÊı¾İÊ§°Ü£¬Êı×éÒÑÂú");
+void add_array(PARRAY array, int data)
+{
+    if (isFull_array(array))
+    {
+        puts("æ·»åŠ æ•°æ®å¤±è´¥ï¼Œæ•°ç»„å·²æ»¡");
         exit(1);
     }
-    array->data[array->count++]=data;
+    array->data[array->count++] = data;
 }
 
 /**
- * Çå¿ÕÊı×é
+ * æ¸…ç©ºæ•°ç»„
  * @param array
  */
-void clean_array(PARRAY array){
-    array->count=0;
-    array->capacity=0;
+void clean_array(PARRAY array)
+{
+    array->count = 0;
+    array->capacity = 0;
     free(array->data);
-    array=NULL;
-
+    array = NULL;
 }

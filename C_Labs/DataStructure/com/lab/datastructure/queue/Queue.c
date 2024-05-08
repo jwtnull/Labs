@@ -2,9 +2,72 @@
  * 数据结构：静态队列
  * @anchor 冰美式
  */
-#include "Queue.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
+typedef struct LoopQueue{
+    int* pBase;
+
+    /**
+     * 指向队列的第一个元素
+     */
+    int front;
+    /**
+     * 指向队列最后一个元素的下一位
+     */
+    int rear;
+
+} LOOPQUEUE,*PLOOPQUEUE;
+
+/**
+ * 队列初始化
+ * @return
+ */
+PLOOPQUEUE init_loopQueue();
+
+/**
+ * 添加数据
+ * @return
+ */
+bool add_loopQueue(PLOOPQUEUE pLoopQueue,int val);
+
+/**
+ * 获取数据
+ * @param pLoopQueue
+ * @return
+ */
+int get_loopQueue(PLOOPQUEUE pLoopQueue);
+
+/**
+ * 判断队列是否为空
+ * @return
+ */
+bool isEmpty_loopQueue(PLOOPQUEUE pLoopQueue);
+
+/**
+ * 判断队列是否已满
+ * @param pLoopQueue
+ * @return
+ */
+bool isFull_loopQueue(PLOOPQUEUE pLoopQueue);
+
+/**
+ * 打印队列
+ * @param pLoopQueue
+ */
+void show_loopQueue(PLOOPQUEUE pLoopQueue);
+int main(int argc, char const *argv[])
+{
+     puts("=====loop queue=====");
+    PLOOPQUEUE pLoopQueue=init_loopQueue();
+    add_loopQueue(pLoopQueue,1);
+    add_loopQueue(pLoopQueue,2);
+    add_loopQueue(pLoopQueue,3);
+    show_loopQueue(pLoopQueue);
+    printf("获取队列数据：%d\n",get_loopQueue(pLoopQueue));
+    show_loopQueue(pLoopQueue);
+    return 0;
+}
 
 /**
  * 队列初始化
