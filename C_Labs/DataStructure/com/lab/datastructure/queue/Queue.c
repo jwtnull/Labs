@@ -1,0 +1,81 @@
+/**
+ * 数据结构：静态队列
+ * @anchor 冰美式
+ */
+#include "Queue.h"
+#include <stdlib.h>
+#include <stdio.h>
+
+/**
+ * 队列初始化
+ * @return
+ */
+PLOOPQUEUE init_loopQueue(){
+    PLOOPQUEUE  pLoopQueue;
+    pLoopQueue->pBase = malloc(sizeof(int)*6);
+    pLoopQueue->front=0;
+    pLoopQueue->rear=0;
+
+    return pLoopQueue;
+}
+
+/**
+ * 添加数据
+ * @return
+ */
+bool add_loopQueue(PLOOPQUEUE pLoopQueue,int val){
+    if (isFull_loopQueue(pLoopQueue)){
+        puts("队列已满");
+        return false;
+    }
+    pLoopQueue->pBase[pLoopQueue->rear]=val;
+    pLoopQueue->rear=(pLoopQueue->rear+1)%6;
+    return true;
+
+
+}
+
+/**
+ * 获取数据
+ * @param pLoopQueue
+ * @return
+ */
+int get_loopQueue(PLOOPQUEUE pLoopQueue){
+    if (isEmpty_loopQueue(pLoopQueue)){
+        puts("队列为空，获取数据失败");
+        exit(EXIT_FAILURE);
+    }
+    int val=pLoopQueue->pBase[pLoopQueue->front];
+    pLoopQueue->front=(pLoopQueue->front+1)%6;
+    return val;
+}
+
+/**
+ * 判断队列是否为空
+ * @return
+ */
+bool isEmpty_loopQueue(PLOOPQUEUE pLoopQueue){
+    return pLoopQueue->rear==pLoopQueue->front;
+}
+
+/**
+ * 判断队列是否已满
+ * @param pLoopQueue
+ * @return
+ */
+bool isFull_loopQueue(PLOOPQUEUE pLoopQueue){
+    return (pLoopQueue->rear+1)%6 == pLoopQueue->front?true:false;
+
+}
+
+/**
+ * 打印队列
+ * @param pLoopQueue
+ */
+void show_loopQueue(PLOOPQUEUE pLoopQueue){
+    int t=pLoopQueue->front;
+    while (t!= pLoopQueue->rear){
+        printf("%d\n",pLoopQueue->pBase[t]);
+        t=(t+1)%6;
+    }
+}
