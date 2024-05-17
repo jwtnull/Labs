@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06_浮动布局小练习</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .leftFix{
+            float: left;
+
+        }
+        .rightFix{
+            float: right;
+        }
+        .cleanFix:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .container{
+            width: 960px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .logo{
+            width: 200px;
+
+        }
+        .banner1{
+            width: 540px;
+            margin: 0 10px;
+
+        }
+        .banner2{
+            width: 200px;
+        }
+        .logo,.banner1,.banner2{
+            height: 80px;
+            background-color: #ccc;
+            line-height: 80px;
+        }
+        .menu {
+            /*width: 960px;*/
+            height: 30px;
+            background-color: #ccc;
+            margin-top: 10px;
+        }
+        .content{
+            margin-top: 10px;
+            /*width: 960px;*/
+        }
+        .item1,.item2 {
+            width: 368px;
+            height: 198px;
+            line-height: 198px;
+            border: 1px solid black;
+            margin-right: 10px;
+        }
+
+        .item3,.item4,.item5,.item6{
+            height: 198px;
+            width: 178px;
+            line-height: 198px;
+            border: 1px solid black;
+            margin-right: 10px;
+        }
+        .bottom{
+            margin-top: 10px;
+        }
+        .item7,.item8,.item9{
+            height: 128px;
+            width: 198px;
+            line-height: 198px;
+            border: 1px solid black;
+        }
+        .item8{
+            margin: 10px 0;
+        }
+        .footer{
+            height: 60px;
+            background-color: #ccc;
+            margin-top: 10px;
+            line-height: 60px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+<!-- 头部 -->
+    <div class="header cleanFix">
+        <div class="logo leftFix">logo</div>
+        <div class="banner1 leftFix">banner1</div>
+        <div class="banner2 leftFix">banner2</div>
+    </div>
+<!--  菜单  -->
+    <div class="menu">菜单</div>
+    <div class="content cleanFix">
+        <div class="left leftFix">
+            <div class="top cleanFix">
+                <div class="item1 leftFix">栏目一</div>
+                <div class="item2 leftFix">栏目二</div>
+            </div>
+            <div class="bottom cleanFix">
+                <div class="item3 leftFix">栏目三</div>
+                <div  class="item4 leftFix">栏目四</div>
+                <div class="item5 leftFix">栏目五</div>
+                <div class="item6 leftFix">栏目六</div>
+            </div>
+        </div>
+        <div class="right rightFix">
+            <div class="item7 ">栏目七</div>
+            <div class="item8 ">栏目八</div>
+            <div class="item9 ">栏目九</div>
+        </div>
+    </div>
+    <div class="footer">页脚</div>
+</div>
+</body>
+</html>
